@@ -8,9 +8,6 @@ public class DiscreteLogarithm {
     private static BigInteger one = BigInteger.valueOf(1);
     private static BigInteger two = BigInteger.valueOf(2);
 
-    //public static final double LOG_2 = Math.log(2.0);
-    private static final int MAX_DIGITS_2 = 977;
-
     private BigInteger aValue = new BigInteger("7");//13
     private BigInteger bValue = new BigInteger("167");//3
     private BigInteger pValue = new BigInteger("587");//50091786122438801387
@@ -28,17 +25,6 @@ public class DiscreteLogarithm {
 
     public static void main(String[] args) {
         DiscreteLogarithm discreteLogarithm = new DiscreteLogarithm();
-    }
-
-    public static double logBigInteger(BigInteger val, double base) {
-        if (val.signum() < 1)
-            return val.signum() < 0 ? Double.NaN : Double.NEGATIVE_INFINITY;
-        int blex = val.bitLength() - MAX_DIGITS_2; // any value in 60..1023 works here
-        if (blex > 0)
-            val = val.shiftRight(blex);
-        double res = Math.log(val.doubleValue());
-        double LOG = Math.log(base);
-        return blex > 0 ? res + blex * LOG : res;
     }
 
     public BigInteger getRandomBigInteger(BigInteger maxLimit, BigInteger minLimit) {
